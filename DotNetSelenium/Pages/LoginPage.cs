@@ -17,7 +17,7 @@ namespace DotNetSelenium.Pages
         }
 
         IWebElement LoginLink => driver.FindElement(By.LinkText("Create your Amazon account"));
-        IWebElement TxtUser => driver.FindElement(By.Name("customerName"));
+        IWebElement TxtUserName => driver.FindElement(By.Name("customerName"));
         IWebElement TxtEmail => driver.FindElement(By.Name("email"));
         IWebElement TxtPassword => driver.FindElement(By.Name("password"));
         IWebElement BtnSubmit => driver.FindElement(By.Id("continue"));
@@ -28,14 +28,9 @@ namespace DotNetSelenium.Pages
         }
         public void LoginDetails(string username, string email, string password)
         {
-            TxtUser.SendKeys(username);
-            TxtEmail.SendKeys(email);
-            TxtPassword.SendKeys(password);
-            BtnSubmit.Click();
-        }
-
-        public void Submit()
-        {
+            TxtUserName.EnterText(username);
+            TxtEmail.EnterText(email);
+            TxtPassword.EnterText(password);
             BtnSubmit.Submit();
         }
     }

@@ -9,38 +9,42 @@ using System.Threading.Tasks;
 
 namespace DotNetSelenium
 {
-    public class SeleniumCustomMethod
+    public static class SeleniumCustomMethod
     {
-        public static void Click(IWebDriver driver, By locator)
+        public static void ClickLink(IWebElement locator)
         {
-            driver.FindElement(locator).Click();
+            locator.Click();
+        }
+        public static void Submit(this IWebElement locator)
+        {
+            locator.Submit();
         }
 
-        public static void EnterText(IWebDriver driver, By locator, string text)
+        public static void EnterText(this IWebElement locator, string text)
         {
-            driver.FindElement(locator).Clear();
-            driver.FindElement(locator).SendKeys(text);
+            locator.Clear();
+            locator.SendKeys(text);
         }
 
-        public static void SelectDropDownByText(IWebDriver driver, By locator, string value)
+        public static void SelectDropDownByText(this IWebElement locator, string value)
         {
-            SelectElement selectElement = new SelectElement(driver.FindElement(locator));
+            SelectElement selectElement = new SelectElement(locator);
             selectElement.SelectByText(value);
         }
 
-        public static void MultiSelectElements(IWebDriver driver, By locator, string[] values)
+        public static void MultiSelectElements(IWebElement locator, string[] values)
         {
-            SelectElement multiSelect = new SelectElement(driver.FindElement(locator));
+            SelectElement multiSelect = new SelectElement(locator);
             foreach (var value in values)
             {
                 multiSelect.SelectByValue(value);
             }
         }
 
-        public static List<string> GetAllSelectedLists(IWebDriver driver, By locator)
+        public static List<string> GetAllSelectedLists(IWebElement locator)
         {
             List<string> options = new List<string>();
-            SelectElement multiSelect = new SelectElement(driver.FindElement(locator));
+            SelectElement multiSelect = new SelectElement(locator);
             IList<IWebElement> selectedOption = multiSelect.AllSelectedOptions;
             foreach (IWebElement option in selectedOption)
             {

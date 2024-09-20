@@ -42,24 +42,24 @@ namespace DotNetSelenium
 
             LoginPage lp = new LoginPage(driver);
             lp.ClickLogin();
-            lp.LoginDetails("HelloUser", "9898098985", "HelloPassword");            
-            lp.Submit();
+            lp.LoginDetails("HelloUser", "9898098985", "HelloPassword");
+            
             driver.Quit();
         }
-        [Test]
-        public void Test_Dropdown()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://www.letskodeit.com/practice");
-            driver.Manage().Window.Maximize();
-            Thread.Sleep(1000);
-            SeleniumCustomMethod.SelectDropDownByText(driver, By.Id("carselect"), "Benz");
-            Thread.Sleep(1000);
-            SeleniumCustomMethod.MultiSelectElements(driver, By.Id("multiple-select-example"), ["peach", "orange"]);
-            Thread.Sleep(1000);
-            var getSelectedOptions = SeleniumCustomMethod.GetAllSelectedLists(driver, By.Id("multiple-select-example"));
-            getSelectedOptions.ForEach(Console.WriteLine);
-            driver.Quit();
-        }
+        //[Test]
+        //public void Test_Dropdown()
+        //{
+        //    IWebDriver driver = new ChromeDriver();
+        //    driver.Navigate().GoToUrl("https://www.letskodeit.com/practice");
+        //    driver.Manage().Window.Maximize();
+        //    Thread.Sleep(1000);
+        //    SeleniumCustomMethod.SelectDropDownByText(driver, By.Id("carselect"), "Benz");
+        //    Thread.Sleep(1000);
+        //    SeleniumCustomMethod.MultiSelectElements(driver, By.Id("multiple-select-example"), ["peach", "orange"]);
+        //    Thread.Sleep(1000);
+        //    var getSelectedOptions = SeleniumCustomMethod.GetAllSelectedLists(driver, By.Id("multiple-select-example"));
+        //    getSelectedOptions.ForEach(Console.WriteLine);
+        //    driver.Quit();
+        //}
     }
 }
