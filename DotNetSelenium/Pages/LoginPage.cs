@@ -9,7 +9,7 @@ namespace DotNetSelenium.Pages
 {
     public class LoginPage
     {
-        private readonly IWebDriver driver;
+        private IWebDriver driver;
 
         public LoginPage(IWebDriver driver)
         {
@@ -26,6 +26,7 @@ namespace DotNetSelenium.Pages
         {
             LoginLink.Click();
         }
+
         public void LoginDetails(string username, string email, string password)
         {
             TxtUserName.EnterText(username);
